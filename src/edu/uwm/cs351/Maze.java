@@ -132,6 +132,7 @@ public class Maze {
 	 */
 	public void read(BufferedReader r) throws IOException {
 		// TODO: Implement this method
+		
 	}
 	
 	/**

@@ -57,7 +57,13 @@ public class Maze {
 	 * @exception IllegalArgumentException if coordinates out of range.
 	 */
 	public boolean isOpenLeft(int i, int j) {
-		return false; // TODO: implement this method.
+		// TODO: implement this method.
+		if(i>=rows || j>=columns) {
+			throw new IllegalArgumentException();
+		}
+		
+		return false; 
+		
 	}
 	
 	/**
@@ -68,6 +74,7 @@ public class Maze {
 	 * @exception IllegalArgumentException if coordinates out of range.
 	 */
 	public boolean isOpenRight(int i, int j) {
+
 		return false; // TODO: implement this method.
 	}
 	
@@ -92,6 +99,8 @@ public class Maze {
 	 * @exception IllegalArgumentException if coordinates out of range.
 	 */
 	public boolean isOpenDown(int i, int j) {
+	
+		 
 		return false; // TODO: implement this method.
 	}
 	
@@ -132,6 +141,41 @@ public class Maze {
 	 */
 	public void read(BufferedReader r) throws IOException {
 		// TODO: Implement this method
+	   String input= r.readLine();
+	   int rcount=0;
+	   int ccount=0;
+	   while(input!=null) {
+		 input= r.readLine();
+		 
+		    if(ccount<columns-1) {
+		    	int j=0;
+		    	for(int i=1;i<=input.length()-2;i++) {
+		    		if(input.charAt(i)=='|') {
+		    			copen[ccount][j]=false;
+		    		}
+		    		else {
+		    			copen[ccount][j]=true;
+		    		}
+		    		j++;
+		    	}
+		    	ccount++;
+		    }
+		    
+		    input =r.readLine();
+		    if(rcount<rows-1) {
+		    	int j=0;
+		    	for(int i=1;i<=input.length()-2;i++) {
+		    		if(input.charAt(i)=='-') {
+		    			ropen[rcount][j]=false;
+		    		}
+		    		else {
+		    			ropen[rcount][j]=true;
+		    		}
+		    		j++;
+		    	}
+		    	rcount++;
+		    }
+	  }
 		
 	}
 	

@@ -63,7 +63,7 @@ public class Maze {
 			return true;
 		}
 		j--;
-		if(j>=copen[i].length || j<0) {
+		if(j<0) {
 			return false;
 		}
 		return copen[i][j]; 
@@ -79,8 +79,7 @@ public class Maze {
 	 */
 	public boolean isOpenRight(int i, int j) {
         checkCell(i,j);
-        j++;
-        if(j>=copen.length || j<0) {
+        if(j>=columns-1) {
         	return false;
         }
 		return copen[i][j]; // TODO: implement this method.
@@ -98,8 +97,12 @@ public class Maze {
 	public boolean isOpenUp(int i, int j) {
 		 // TODO: implement this method.
 		checkCell(i,j);
-		if(i==rows-1 && j==0) {
+		if(i==0 && j==columns-1) {
 			return true;
+		}
+		i--;
+		if(i<0) {
+			return false;
 		}
 		return ropen[i][j];
 	}
@@ -114,6 +117,9 @@ public class Maze {
 	public boolean isOpenDown(int i, int j) {
 		// TODO: implement this method.
 		checkCell(i,j);
+		if(i>=rows-1) {
+			return false;
+		}
 		return ropen[i][j];
 	}
 	
@@ -218,6 +224,8 @@ public class Maze {
 	 */
 	public void write(PrintWriter pw) {
 		// TODO: Print this maze using the same format read expects
+	
+		
 	}
 
 	

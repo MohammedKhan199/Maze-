@@ -31,6 +31,8 @@ public class MazeSolver {
 	 * @return solution display (must not be null)
 	 */
 	public SolutionDisplay findPath() {
+		SolutionDisplay s= new PathSolutionDisplay(maze,pending);
+		
 		
 		return null; // TODO: implement this method
 	}

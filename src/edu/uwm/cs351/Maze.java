@@ -62,8 +62,9 @@ public class Maze {
 		if(i==rows-1&& j==0) {
 			return true;
 		}
-		if(j==columns-1) {
-			j=j-1;
+		j--;
+		if(j>=copen[i].length || j<0) {
+			return false;
 		}
 		return copen[i][j]; 
 		
@@ -78,6 +79,10 @@ public class Maze {
 	 */
 	public boolean isOpenRight(int i, int j) {
         checkCell(i,j);
+        j++;
+        if(j>=copen.length || j<0) {
+        	return false;
+        }
 		return copen[i][j]; // TODO: implement this method.
 	}
 	

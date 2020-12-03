@@ -148,6 +148,7 @@ public class TestMaze extends LockedTestCase {
 	
 	public void test06() {
 		maze.setOpenRight(1, 3, true);
+		
 		maze.setOpenDown(0, 2, true);
 		assertFalse(maze.isOpenLeft(1, 3));
 	}

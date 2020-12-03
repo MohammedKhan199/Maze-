@@ -31,6 +31,7 @@ public class MazeSolver {
 	 * @return solution display (must not be null)
 	 */
 	public SolutionDisplay findPath() {
+		
 		return null; // TODO: implement this method
 	}
 	// Our solution uses a helper method to avoid repeating code.  This is optional.

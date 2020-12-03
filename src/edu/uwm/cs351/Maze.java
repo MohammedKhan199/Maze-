@@ -224,7 +224,56 @@ public class Maze {
 	 */
 	public void write(PrintWriter pw) {
 		// TODO: Print this maze using the same format read expects
-	
+		for(int i=0;i<columns;i++) {
+			pw.write("+");
+			if(i!=columns-1) {
+				pw.write("-");
+			}
+			else {
+				pw.write(" ");
+			}
+			
+		}
+		pw.write("+");
+		pw.write("\n");
+		
+		for(int i=0;i<rows-1;i++) {	
+			for(int j=0;j<columns-1;j++) {
+				pw.write("+");
+				if(ropen[i][j]==false) {
+					pw.write("-");
+				}
+				else {
+					pw.write(" ");
+				}
+			}
+			
+		}
+		
+		
+		for(int i=0;i<rows-1;i++) {
+			for(int j=0;j<columns-1;j++) {
+				pw.write(" ");
+				if(copen[i][j]==false) {
+					pw.write("|");
+				}
+				else {
+					pw.write(" ");
+				}
+			}
+		
+		}
+		pw.write("  |");
+		pw.write("\n");
+		
+		for(int i=0;i<columns;i++) {
+			pw.write("+");
+			pw.write("-");
+			
+		}
+		pw.write("+");
+		
+		
 		
 	}
 

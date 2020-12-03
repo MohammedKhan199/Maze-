@@ -58,11 +58,14 @@ public class Maze {
 	 */
 	public boolean isOpenLeft(int i, int j) {
 		// TODO: implement this method.
-		if(i>=rows || j>=columns) {
-			throw new IllegalArgumentException();
+		checkCell(i,j);
+		if(i==rows-1&& j==0) {
+			return true;
 		}
-		
-		return false; 
+		if(j==columns-1) {
+			j=j-1;
+		}
+		return copen[i][j]; 
 		
 	}
 	
@@ -74,8 +77,8 @@ public class Maze {
 	 * @exception IllegalArgumentException if coordinates out of range.
 	 */
 	public boolean isOpenRight(int i, int j) {
-
-		return false; // TODO: implement this method.
+        checkCell(i,j);
+		return copen[i][j]; // TODO: implement this method.
 	}
 	
 	/**
@@ -88,7 +91,12 @@ public class Maze {
 	 * @exception IllegalArgumentException if coordinates out of range.
 	 */
 	public boolean isOpenUp(int i, int j) {
-		return false; // TODO: implement this method.
+		 // TODO: implement this method.
+		checkCell(i,j);
+		if(i==rows-1 && j==0) {
+			return true;
+		}
+		return ropen[i][j];
 	}
 	
 	/**
@@ -99,9 +107,9 @@ public class Maze {
 	 * @exception IllegalArgumentException if coordinates out of range.
 	 */
 	public boolean isOpenDown(int i, int j) {
-	
-		 
-		return false; // TODO: implement this method.
+		// TODO: implement this method.
+		checkCell(i,j);
+		return ropen[i][j];
 	}
 	
 	
@@ -147,31 +155,40 @@ public class Maze {
 	   while(input!=null) {
 		 input= r.readLine();
 		 
-		    if(ccount<columns-1) {
-		    	int j=0;
-		    	for(int i=1;i<=input.length()-2;i++) {
+		    if(ccount<copen.length-1) {
+		    	int i=1;
+		    	for(int j=0;j<copen[ccount].length;j++) {
+		    		char s=input.charAt(i);
+		    		if(s==' ') {
+		    			i++;
+		    		}
 		    		if(input.charAt(i)=='|') {
 		    			copen[ccount][j]=false;
 		    		}
 		    		else {
 		    			copen[ccount][j]=true;
 		    		}
-		    		j++;
+		    	    i++;
 		    	}
 		    	ccount++;
-		    }
+		    } 
 		    
 		    input =r.readLine();
-		    if(rcount<rows-1) {
-		    	int j=0;
-		    	for(int i=1;i<=input.length()-2;i++) {
+		    if(rcount<ropen.length-1) {
+		    	int i=1;
+		        // input.split("+");
+		         
+		    	for(int j=0;j<ropen[rcount].length;j++) {
+		    		if(input.charAt(i)=='+') {
+		    			i++;
+		    		}
 		    		if(input.charAt(i)=='-') {
 		    			ropen[rcount][j]=false;
 		    		}
 		    		else {
 		    			ropen[rcount][j]=true;
 		    		}
-		    		j++;
+		    		i++;
 		    	}
 		    	rcount++;
 		    }

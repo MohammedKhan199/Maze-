@@ -236,9 +236,36 @@ public class Maze {
 		}
 		pw.write("+");
 		pw.write("\n");
-		
-		for(int i=0;i<rows-1;i++) {	
-			for(int j=0;j<columns-1;j++) {
+		int count=0;
+		while(count<=rows-1) {
+			
+			if(count<rows-1) {
+			    pw.write("|");
+			}
+			else {
+				pw.write(" ");
+			}
+			
+			for(int i=0;i<copen.length;i++) {
+				
+				for(int j=0;j<copen[i].length;j++) {
+					pw.write(" ");
+					if(copen[i][j]==false) {
+						pw.write("|");
+					}
+					else {
+						pw.write(" ");
+					}
+					
+				}
+			
+		}
+		   pw.write(" ");
+		   pw.write("|");
+		    pw.write("\n");
+	if(count<rows-1) {
+		for(int i=0;i<ropen.length;i++) {
+			for(int j=0;j<ropen[i].length;j++) {
 				pw.write("+");
 				if(ropen[i][j]==false) {
 					pw.write("-");
@@ -246,25 +273,18 @@ public class Maze {
 				else {
 					pw.write(" ");
 				}
-			}
-			
-		}
-		
-		
-		for(int i=0;i<rows-1;i++) {
-			for(int j=0;j<columns-1;j++) {
-				pw.write(" ");
-				if(copen[i][j]==false) {
-					pw.write("|");
-				}
-				else {
-					pw.write(" ");
-				}
+				pw.write("+");
 			}
 		
 		}
-		pw.write("  |");
 		pw.write("\n");
+	}
+		//pw.write("\n");
+	
+		count++;
+		
+	}
+		//pw.write("\n");
 		
 		for(int i=0;i<columns;i++) {
 			pw.write("+");
@@ -272,8 +292,6 @@ public class Maze {
 			
 		}
 		pw.write("+");
-		
-		
 		
 	}
 

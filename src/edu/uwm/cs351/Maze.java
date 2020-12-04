@@ -224,76 +224,84 @@ public class Maze {
 	 */
 	public void write(PrintWriter pw) {
 		// TODO: Print this maze using the same format read expects
+		String s="";
 		for(int i=0;i<columns;i++) {
-			pw.write("+");
+			s=s+"+";
 			if(i!=columns-1) {
-				pw.write("-");
+			   s=s+"-";
 			}
 			else {
-				pw.write(" ");
+				s=s+" ";
 			}
 			
 		}
-		pw.write("+");
-		pw.write("\n");
+		s=s+"+";
+		pw.println(s);
 		int count=0;
-		while(count<=rows-1) {
-			
-			if(count<rows-1) {
-			    pw.write("|");
-			}
-			else {
-				pw.write(" ");
-			}
-			
+		while(count<rows-1) {
+			s="";
+			s=s+"|";
 			for(int i=0;i<copen.length;i++) {
-				
 				for(int j=0;j<copen[i].length;j++) {
-					pw.write(" ");
+					s=s+" ";
 					if(copen[i][j]==false) {
-						pw.write("|");
+						s=s+"|";
 					}
 					else {
-						pw.write(" ");
+						s=s+" ";
 					}
-					
 				}
-			
-		}
-		   pw.write(" ");
-		   pw.write("|");
-		    pw.write("\n");
-	if(count<rows-1) {
-		for(int i=0;i<ropen.length;i++) {
-			for(int j=0;j<ropen[i].length;j++) {
-				pw.write("+");
-				if(ropen[i][j]==false) {
-					pw.write("-");
+			}
+			if(s=="") {
+				s=s+"| ";
+			}
+			s=s+" |";
+			pw.println(s);
+			s="";
+		  for(int i=0;i<ropen.length;i++) {
+			  for(int j=0;j<ropen[i].length;j++) {
+				  s=s+"+";
+				  if(ropen[i][j]==false) {
+					  s+="-";
+				  }
+				  else {
+					  s+=" ";
+				  }
+			  }
+		  }
+			s=s+"+";
+			pw.println(s);
+			s="";
+			count++;
+	}
+		s="";
+		s=s+" ";
+		for(int i=0;i<copen.length;i++) {
+			for(int j=0;j<copen[i].length;j++) {
+				s=s+" ";
+				if(copen[i][j]==false) {
+					s=s+"|";
 				}
 				else {
-					pw.write(" ");
+					s=s+" ";
 				}
-				pw.write("+");
+			
 			}
-		
 		}
-		pw.write("\n");
-	}
-		//pw.write("\n");
-	
-		count++;
-		
-	}
-		//pw.write("\n");
+		//if(s.charAt(s.length()-1)!='|') {
+			s+=" |";
+		//}
+		pw.println(s);
+		s="";
 		
 		for(int i=0;i<columns;i++) {
-			pw.write("+");
-			pw.write("-");
-			
+			s+="+";
+			s+="-";
 		}
-		pw.write("+");
+		s=s+"+";
+		pw.println(s);
 		
-	}
+}
 
 	
 	/// NB: The rest of this class is done for you

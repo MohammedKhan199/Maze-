@@ -35,7 +35,7 @@ public class MazeSolver {
 	    boolean tried[][]= new boolean[maze.rows()][maze.columns()];
 		pending.add(maze.makeCell(maze.rows()-1,0));
 		List<Maze.Cell> li= new ArrayList<>();
-		int row=maze.rows()-1;
+		int row=;
 		int col=0;
 	    while(!pending.isEmpty()) {
 			

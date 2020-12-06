@@ -166,7 +166,7 @@ public class Maze {
 	   while(input!=null) {
 		 input= r.readLine();
 		 
-		    if(ccount<copen.length-1) {
+		    if(ccount<copen.length) {
 		    	int i=1;
 		    	for(int j=0;j<copen[ccount].length;j++) {
 		    		char s=input.charAt(i);
@@ -185,7 +185,7 @@ public class Maze {
 		    } 
 		    
 		    input =r.readLine();
-		    if(rcount<ropen.length-1) {
+		    if(rcount<ropen.length) {
 		    	int i=1;
 		        // input.split("+");
 		         

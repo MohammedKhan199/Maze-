@@ -235,70 +235,67 @@ public class Maze {
 			}
 			
 		}
-		s=s+"+";
+		
+		s+="+";
 		pw.println(s);
-		int count=0;
-		while(count<rows-1) {
-			s="";
-			s=s+"|";
-			for(int i=0;i<rows;i++) {
-				for(int j=0;j<columns;j++) {
-					s=s+" ";
-					if(i<copen.length && j<copen[i].length) {
-						if(copen[i][j]==false) {
-							s=s+"|";
-						}
-						else {
-							s=s+" ";
-						}
+		s="";
+		for(int i=0;i<rows-1;i++) {
+			if(i<copen.length) {
+				int j=0;
+				s="";
+				s+="|";
+				while(j<copen[i].length) {
+					s+=" ";
+					if(copen[i][j]==false) {
+						s+="|";
 					}
+					else if(copen[i][j]==true) {
+						s+=" ";
+					}
+					j++;
+				}
+				s+=" ";
+				s+="|";
+				pw.println(s);
+			}
+			if(i<ropen.length) {
+				int j=0;
+				s="";
+				
+				while(j<ropen[i].length) {
+					s+="+";
+					if(ropen[i][j]==false) {
+						s+="-";
+					}
+					else if(ropen[i][j]==true){
+						s+=" ";
+					}
+					j++;
+				}
+				s+="+";
+				pw.println(s);
+			}
+			
+			
+		}
+		s="";
+		s+="  ";
+	    int k=copen.length-1;
+		for(int i=0;i<columns-1;i++) {
+			if(i<copen[k].length) {
+				if(copen[k][i]==true) {
+					s+=" ";
+				}
+				else if(copen[k][i]==false) {
+					s+="|";
 				}
 			}
-			s=s+"|";
-			pw.println(s);
-			s="";
-		  for(int i=0;i<rows;i++) {
-			  for(int j=0;j<columns;j++) {
-				  s=s+"+";
-					if(i<ropen.length && j<ropen[i].length) {
-						if(ropen[i][j]==false) {
-							s=s+"-";
-						}
-						else {
-							s=s+" ";
-						}
-				  }
-			  }
-		  }
-		   
-	
-			pw.println(s);
-			s="";
-			count++;
-	}
-		s="";
-		s=" ";
-		for(int i=0;i<rows;i++) {
-			for(int j=0;j<columns;j++) {
-				
-					s=s+" ";
-				if(i<copen.length && j<copen[i].length) {
-					if(copen[i][j]==false) {
-						s=s+"|";
-					}
-					else {
-						s=s+" ";
-					}
-			 }
-				//s+=" ";
-	    }
-	}
-		
-	    s+="|";
-	
+			s+=" ";
+			
+		}
+		s+="|";
 		pw.println(s);
 		s="";
-		
 		for(int i=0;i<columns;i++) {
 			s+="+";
 			s+="-";

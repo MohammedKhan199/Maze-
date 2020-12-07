@@ -261,7 +261,6 @@ public class Maze {
 			if(i<ropen.length) {
 				int j=0;
 				s="";
-				
 				while(j<ropen[i].length) {
 					s+="+";
 					if(ropen[i][j]==false) {
@@ -275,8 +274,6 @@ public class Maze {
 				s+="+";
 				pw.println(s);
 			}
-			
-			
 		}
 		s="";
 		s+="  ";

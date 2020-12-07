@@ -1,3 +1,4 @@
+
 package edu.uwm.cs351;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class MazeSolver {
 	    boolean tried[][]= new boolean[maze.rows()][maze.columns()];
 		pending.add(maze.makeCell(maze.rows()-1,0));
 		List<Maze.Cell> li= new ArrayList<>();
-		int row=;
+		int row=maze.rows()-1;
 		int col=0;
 	    while(!pending.isEmpty()) {
 			
@@ -69,7 +70,9 @@ public class MazeSolver {
 		    	}
 		    }
 		    else if(maze.isOpenLeft(row,col)) {
-		    	col=col-1;
+		    	if(col>0) {
+		    	    col=col-1;
+		    	}
 		    	if(visited[row][col]==null) {
 		    		pending.add(maze.makeCell(row, col));
 		    	}

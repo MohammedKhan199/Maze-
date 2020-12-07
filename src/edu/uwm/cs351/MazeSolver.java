@@ -54,40 +54,39 @@ public class MazeSolver {
 		    	s=new PathSolutionDisplay(maze,li);
 		    	return s;
 		    }
+		    for(int i=0;i<4;i++) {
+		        if(maze.isOpenRight(row, col)) {
+			    	col=col+1;
+			    }
+		        else if(maze.isOpenUp(row, col)) {
+		        	if(row>0)
+			    	   row=row-1;
+			    	
+			    }
+		        else if(maze.isOpenLeft(row,col)) {
+			    	if(col>0) {
+			    	    col=col-1;
+			    	}
+			    	
+			    }
+			    
+		        else if(maze.isOpenDown(row, col)) {
+			    	row=row+1;
+			    }
+			   VisitedCheck(row,col,pending);
+		   }
 		    
-		   
-		    if(maze.isOpenUp(row, col)) {
-		    	row=row-1;
-		    	if(visited[row][col]==null) {
-		    		pending.add(maze.makeCell(row, col));
-		    	}
-		    }
-
-		    else if(maze.isOpenRight(row, col)) {
-		    	col=col+1;
-		    	if(visited[row][col]==null) {
-		    		pending.add(maze.makeCell(row, col));
-		    	}
-		    }
-		    else if(maze.isOpenLeft(row,col)) {
-		    	if(col>0) {
-		    	    col=col-1;
-		    	}
-		    	if(visited[row][col]==null) {
-		    		pending.add(maze.makeCell(row, col));
-		    	}
-		    }
-		    
-		    if(maze.isOpenDown(row, col)) {
-		    	row=row+1;
-		    	if(visited[row][col]==null) {
-		    		pending.add(maze.makeCell(row, col));
-		    	}
-		    }
-		   
 		}
 	    s=new VisitedSolutionDisplay(maze,tried);
 		return s; // TODO: implement this method
 	}
 	// Our solution uses a helper method to avoid repeating code.  This is optional.
+
+	private void VisitedCheck(int row, int col, Stack<Cell> pending2) {
+		if(visited[row][col]==null) {
+			pending.add(maze.makeCell(row, col));
+		}
+		
+	}
+	
 }

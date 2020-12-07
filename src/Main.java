@@ -2,9 +2,9 @@ import edu.uwm.cs351.Maze;
 
 public class Main {
 	public static void main(String[] args) {
-		args= new String[10];
-		args[0]="--read";
-		args[1]="small.txt";
+		System.out.println("--read noway.txt");
+		System.out.println("--solve");
+		System.out.println("--print");
 		Maze.main(args);
 	}
 }

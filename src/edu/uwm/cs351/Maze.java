@@ -12,6 +12,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
 /**
+ * *********MOAHMMED KHAN ****************
  * A 2 dimensional maze.
  * It is entered on the last row at the left
  * and is exited at the last column at the top.

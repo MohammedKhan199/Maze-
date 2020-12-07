@@ -41,6 +41,8 @@ public class MazeSolver {
 	    while(!pending.isEmpty()) {
 			
 			Cell c=pending.pop();
+			row=c.row;
+			col=c.column;
 		    if(visited[row][col]==null) {
 		    	visited[row][col]=c;
 		    	tried[row][col]=true;
@@ -81,8 +83,7 @@ public class MazeSolver {
 		    	   VisitedCheck(r,c1,pending);
 		       }
 		   }
-		    row=r;
-		    col=c1;
+		    
 		    
 		}
 	    s=new VisitedSolutionDisplay(maze,tried);

@@ -46,6 +46,7 @@ public class MazeSolver {
 		    if(visited[row][col]==null) {
 		    	visited[row][col]=c;
 		    	tried[row][col]=true;
+
 		    	li.add(c);
 		    }
 		    else {

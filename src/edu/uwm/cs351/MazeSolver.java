@@ -40,18 +40,13 @@ public class MazeSolver {
 		int col=0;
 	    while(!pending.isEmpty()) {
 			
-			Cell c=pending.pop();
+			Cell c=pending.peek();
 			row=c.row;
 			col=c.column;
 		    if(visited[row][col]==null) {
 		    	visited[row][col]=c;
 		    	tried[row][col]=true;
-
 		    	li.add(c);
-		    }
-		    else {
-		    	continue;
-		    	
 		    }
 		    
 		    if(row==0 && col==maze.columns()-1) {
@@ -61,54 +56,49 @@ public class MazeSolver {
 		    int r=-1;
 	    	int c1=-1;
 		   
-		        if(maze.isOpenRight(row, col) && c1!=col+1 && r!=row) {
-			    	r=row;
-			    	c1=col+1;
-			    	if(r==0 && c1==maze.columns()-1) {
-			    		li.add(maze.makeCell(r, c1));
-				    	s=new PathSolutionDisplay(maze,li);
-				    	VisitedCheck(r,c1,pending);
-				    	return s;
-				    }
-			    	VisitedCheck(r,c1,pending);
-			    	 
-			    	
-			    }
-		       if(row>0 && maze.isOpenUp(row, col) && r!=row-1 && c1!=col) {
+		        boolean newedge=false;
+		       if(row>0 && maze.isOpenUp(row, col)) {
 		        		c1=col;
 		        		r=row-1;
-		        		
-		        		if(r==0 && c1==maze.columns()-1) {
-		        			li.add(maze.makeCell(r, c1));
-					    	s=new PathSolutionDisplay(maze,li);
-					    	VisitedCheck(r,c1,pending);
-					    	return s;
-					    }
-		        		VisitedCheck(r,c1,pending);
+		        		if(VisitedCheck(r,c1,visited)) {
+			        		pending.add(maze.makeCell(r, c1));
+			        		newedge=true;
+			        	}
+		         }
+		       if(maze.isOpenRight(row, col)) {
+			    	r=row;
+			    	c1=col+1;
+			    	if(VisitedCheck(r,c1,visited)) {
+		        		pending.add(maze.makeCell(r, c1));
+		        		newedge=true;
+		        	}
+			    	
 			    }
-		        if(col>0 &&maze.isOpenLeft(row,col) && r!=row && c1!=col-1) {
-			    	    r=row;
-			    	    c1=col-1;
-			    	    if(r==0 && c1==maze.columns()-1) {
-		        			li.add(maze.makeCell(r, c1));
-					    	s=new PathSolutionDisplay(maze,li);
-					    	VisitedCheck(r,c1,pending);
-					    	return s;
-					    }
-			    	    VisitedCheck(r,c1,pending);
-			    	}
-			    
-		        if(maze.isOpenDown(row, col) && c1!=col && r!=row+1) {
+		       
+		       if(maze.isOpenDown(row, col)) {
 			    	r=row+1;
 			    	c1=col;
-			    	if(r==0 && c1==maze.columns()-1) {
-			    		li.add(maze.makeCell(r, c1));
-				    	s=new PathSolutionDisplay(maze,li);
-				    	VisitedCheck(r,c1,pending);
-				    	return s;
-				    }
-			    	VisitedCheck(r,c1,pending);
+			    	
+			    	if(VisitedCheck(r,c1,visited)) {
+		        		pending.add(maze.makeCell(r, c1));
+		        		newedge=true;
+		        	}
+		        }
+		        if(col>0 &&maze.isOpenLeft(row,col)) {
+			    	    r=row;
+			    	    c1=col-1;
+			    	    if(VisitedCheck(r,c1,visited)) {
+			        		pending.add(maze.makeCell(r, c1));
+			        		newedge=true;
+			        	}
+			        		
 			    }
+			    
+		        if(newedge==false) {
+		        	li.remove(c);
+		        	pending.pop();
+		        }
+		        
 		      
 		  
 		    
@@ -119,15 +109,14 @@ public class MazeSolver {
 	}
 	// Our solution uses a helper method to avoid repeating code.  This is optional.
 
-	private boolean VisitedCheck(int row, int col, Stack<Cell> pending2) {
+	private boolean VisitedCheck(int row, int col, Cell[][] visited) {
+		
 		if(visited[row][col]==null) {
-			pending.add(maze.makeCell(row, col));
 			return true;
 		}
 		else {
 			return false;
 		}
-		
 	}
 	
 }

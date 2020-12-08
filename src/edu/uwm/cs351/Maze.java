@@ -83,6 +83,7 @@ public class Maze {
         if(j>=columns-1) {
         	return false;
         }
+        
 		return copen[i][j]; // TODO: implement this method.
 	}
 	

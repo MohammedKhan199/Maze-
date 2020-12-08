@@ -59,30 +59,57 @@ public class MazeSolver {
 		    }
 		    int r=-1;
 	    	int c1=-1;
-		    for(int i=0;i<4;i++) {
+		   
 		        if(maze.isOpenRight(row, col) && c1!=col+1 && r!=row) {
 			    	r=row;
 			    	c1=col+1;
+			    	if(r==0 && c1==maze.columns()-1) {
+			    		li.add(maze.makeCell(r, c1));
+				    	s=new PathSolutionDisplay(maze,li);
+				    	VisitedCheck(r,c1,pending);
+				    	return s;
+				    }
+			    	VisitedCheck(r,c1,pending);
+			    	 
 			    	
 			    }
-		        else if(row>0 && maze.isOpenUp(row, col) && r!=row-1 && c1!=col) {
+		       if(row>0 && maze.isOpenUp(row, col) && r!=row-1 && c1!=col) {
 		        		c1=col;
 		        		r=row-1;
-			    	
+		        		
+		        		if(r==0 && c1==maze.columns()-1) {
+		        			li.add(maze.makeCell(r, c1));
+					    	s=new PathSolutionDisplay(maze,li);
+					    	VisitedCheck(r,c1,pending);
+					    	return s;
+					    }
+		        		VisitedCheck(r,c1,pending);
 			    }
-		        else if(col>0 &&maze.isOpenLeft(row,col) && r!=row && c1!=col-1) {
+		        if(col>0 &&maze.isOpenLeft(row,col) && r!=row && c1!=col-1) {
 			    	    r=row;
 			    	    c1=col-1;
+			    	    if(r==0 && c1==maze.columns()-1) {
+		        			li.add(maze.makeCell(r, c1));
+					    	s=new PathSolutionDisplay(maze,li);
+					    	VisitedCheck(r,c1,pending);
+					    	return s;
+					    }
+			    	    VisitedCheck(r,c1,pending);
 			    	}
 			    
-		        else if(maze.isOpenDown(row, col) && c1!=col && r!=row+1) {
+		        if(maze.isOpenDown(row, col) && c1!=col && r!=row+1) {
 			    	r=row+1;
 			    	c1=col;
+			    	if(r==0 && c1==maze.columns()-1) {
+			    		li.add(maze.makeCell(r, c1));
+				    	s=new PathSolutionDisplay(maze,li);
+				    	VisitedCheck(r,c1,pending);
+				    	return s;
+				    }
+			    	VisitedCheck(r,c1,pending);
 			    }
-		       if(r>=0 && c1>=0) {
-		    	   VisitedCheck(r,c1,pending);
-		       }
-		   }
+		      
+		  
 		    
 		    
 		}
